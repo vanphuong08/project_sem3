@@ -1,0 +1,138 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout_User.cshtml";
+    PayCartOnline.Models.CheckUser isCheck = Session["Account"] != null ? (PayCartOnline.Models.CheckUser)Session["Account"] : null;
+
+}
+    <div class="all_noidung_admin">
+        <div class="box_noidung_thongtin_admin">
+            <div class="container">
+                <div class="row">
+                    <form action="AccountUser" method="post">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="box_left_noidung_admin">
+                                <h4 class="tieude_all_noidung_admin">Thông tin chủ tài khoản</h4>
+
+                                <div class="form-group">
+                                    <label>Họ và tên</label>
+                                    <input id="fullname" class="form-control" type="text" value="@Model.FullName" name="fullname" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Địa chỉ liên hệ</label>
+                                    <input id="address" class="form-control" type="text" value="@Model.Address" name="address" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>CMND/Hộ chiếu</label>
+                                    <input maxlength="15" class="form-control" id="passport" type="number" value="@Model.Identity_people" name="cmnd" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Giới tính</label>
+                                    <select id="gender" name="gender" class="form-control">
+                                        <option value="1">Nam</option>
+                                        <option value="2" selected="selected">Nữ</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Ngày sinh</label>
+                                    <input id="dob" class="form-control" type="date" value="@Model.Birthday" name="birthday" required>
+                                </div>
+
+                                <button type="submit" class="btn btn-success">Cập nhật</button>
+
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <h4 class="tieude_all_noidung_admin">Thông tin ví điện tử</h4> <!--Thông tin ví điện tử-->
+                        <span class="text_tieude_small">Ảnh đại diện</span>
+                        <ul class="list_all_thongtin_right">
+                            <li>
+                                <div class="box_thumb_admin"><img width="100" height="100" alt=""></div>
+                                <div class="info_thumb_admin">
+                                    Ảnh đại diện sẽ được thể hiện tại nút thanh toán của bạn.<em>Kích thước ảnh 300x300 pixels,ảnh không nặng quá 1Mb</em>
+                                </div>
+                            </li>
+                            <li>
+
+                            </li>
+                        </ul>
+                        <div class="clear"></div>
+                        <div class="all_btn_thaydoi_thumb_admin"><a onclick="" href="javascript:;" class="btn_all_admin_ud">Thay đổi</a></div>
+
+                        <div class="clear"></div>
+                        <span class="text_tieude_small">Số ví điện tử</span>
+                        <ul class="list_all_thongtin_right">
+                            <li>@isCheck.Phone</li>
+                            <li></li>
+                        </ul>
+                        <div class="clear"></div>
+                        <span class="text_tieude_small">Mật khẩu</span>
+                        <ul class="list_all_thongtin_right">
+                            <li>
+                                **********
+                            </li>
+                            <li><a href="javascript:;" onclick="" class="btn_all_admin_ud">Thay đổi</a></li>
+                        </ul>
+                        <div class="clear"></div>
+                        <span class="text_tieude_small">Loại tài khoản</span>
+                        <ul class="list_all_thongtin_right">
+                            <li>
+
+                                Tài khoản cá nhân
+                            </li>
+                            <li></li>
+                        </ul>
+
+                        <div class="clear"></div>
+                        <span class="text_tieude_small">Hình thức bảo mật</span>
+                        <ul class="list_all_thongtin_right">
+                            <li style="color: #75b21d;">
+                                VoiceOTP, OTP SMS
+                            </li>
+                            <li><a href="" class="btn_all_admin_ud">Chi tiết</a></li>
+                        </ul>
+
+                        <div class="clear"></div>
+                        <span class="text_tieude_small">Email</span>
+                        <p style="color: red; font-style: italic; font-size: 13px; display: none" id="p_error_notify"></p>
+                        <p style="color: green; font-style: italic; font-size: 13px; display: none" id="p_success_notify"></p>
+                        <ul class="list_all_thongtin_right">
+                            <li><input id="txtEmailUpdate" class="form-control" type="text" name="" value=""></li>
+                            <li>
+                                <a href="javascript:" onclick="" style="margin-left: 10px;" class="btn_all_admin_ud">Xác thực</a>
+                                <a href="javascript:" onclick="" class="btn_all_admin_ud">Đổi email</a>
+
+                            </li>
+                        </ul>
+                        <div class="clear"></div>
+                        <span class="text_tieude_small">Trạng thái định danh</span>
+                        <ul class="list_all_thongtin_right">
+                            <li>
+                                <span style="color: red;">
+                                    Chưa định danh ngân hàng
+                                </span>
+                            </li>
+                            <li>
+                                <a href="" class="btn_all_admin_ud">Định danh</a>
+
+                            </li>
+                        </ul>
+                        <div class="clear"></div>
+                        <span class="text_tieude_small">Trạng thái xác thực CMND/ Thẻ CCCD</span>
+                        <ul class="list_all_thongtin_right">
+                            <li>
+                                <span style="color: red;">
+                                    Chưa xác thực
+                                </span>
+                            </li>
+                            <li>
+                                <a href="" class="btn_all_admin_ud">Xác thực</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>     
+    </div>
+
+ 
